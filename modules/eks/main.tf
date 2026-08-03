@@ -4,9 +4,8 @@ module "eks" {
 
   version = "~>21.0"
 
-  cluster_name = var.cluster_name
-
-  cluster_version = "1.33"
+  name               = var.cluster_name
+  kubernetes_version = "1.33"
 
   subnet_ids = data.aws_subnets.default.ids
 
