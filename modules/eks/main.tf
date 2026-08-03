@@ -2,7 +2,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.24"
 
-  name               = var.cluster_name
+  name= var.cluster_name
   kubernetes_version = "1.33"
 
   vpc_id     = data.aws_vpc.default.id
