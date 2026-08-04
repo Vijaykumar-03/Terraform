@@ -10,7 +10,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     worker = {
-      instance_types = ["t3.medium"]
+      instance_types = ["t3.micro"]
       desired_size   = 2
       min_size       = 1
       max_size       = 3
