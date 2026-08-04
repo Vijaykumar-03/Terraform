@@ -1,3 +1,7 @@
-variable "function_name" {}
+variable "function_name" {
+  type = string
+}
 
-variable "role_arn" {}
+variable "role_arn" {
+  type = string
+}
