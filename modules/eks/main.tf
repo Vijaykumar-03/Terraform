@@ -20,7 +20,7 @@ module "eks" {
       ami_type       = "AL2023_x86_64_STANDARD"
 
       # Use t3.medium instead of t3.micro
-      instance_types = "t3.micro"
+      instance_types = ["t3.micro"]
 
       desired_size = 2
       min_size     = 1
