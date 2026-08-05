@@ -18,7 +18,9 @@ module "eks" {
   eks_managed_node_groups = {
     worker = {
       ami_type       = "AL2023_x86_64_STANDARD"
-      instance_types = ["t3.medium"]
+
+      # Use t3.medium instead of t3.micro
+      instance_types = "t3.micro"
 
       desired_size = 2
       min_size     = 1
