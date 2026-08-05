@@ -1,19 +1,3 @@
-resource "aws_launch_template" "eks_nodes" {
-  name_prefix = "eks-worker-"
-
-  key_name = "terraform-key"
-
-  update_default_version = true
-
-  tag_specifications {
-    resource_type = "instance"
-
-    tags = {
-      Name = "eks-worker"
-    }
-  }
-}
-
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.24"
@@ -34,16 +18,13 @@ module "eks" {
   eks_managed_node_groups = {
     worker = {
       ami_type       = "AL2023_x86_64_STANDARD"
-      instance_types = ["t3.micro"]
+      instance_types = ["t3.medium"]
 
       desired_size = 2
       min_size     = 1
       max_size     = 3
 
       capacity_type = "ON_DEMAND"
-
-      launch_template_id      = aws_launch_template.eks_nodes.id
-      launch_template_version = "$Latest"
 
       labels = {
         role = "worker"
